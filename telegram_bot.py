@@ -10,6 +10,24 @@ button4 = pzgram.create_button("1 h", "choice4")
 k = [[button1, button2, button3, button4]]
 pool_keyboard = pzgram.create_inline(k)
 
+
+def istant(instaa = 0):
+        global insta1
+        insta1 = instaa
+        return insta1
+
+def unminuto(minu = 0):
+        minu1 = minu
+        return minu1
+
+def dieciminn(dmin = 0):
+        dmin1 = dmin
+        return dmin1
+
+def unoraa(unh = 0):
+        unh1 = unh
+        return unh1
+
 def pool_command(chat):
         global pool_message, pool_keyboard
         pool_message = "Select pressure"
@@ -17,10 +35,10 @@ def pool_command(chat):
 
 def catch_results(query, data, message, sender):
         global pool_message, pool_keyboard
-        insta = 0
-        unmin = 0
-        unora = 0
-        diecimin = 0
+        insta = istant()
+        unmin = unminuto()
+        unora = unoraa()
+        diecimin = dieciminn()
         if data == "choice1":
                 choice = str(insta)
         elif data == "choice2":
@@ -32,6 +50,7 @@ def catch_results(query, data, message, sender):
 
         pool_message += "\n" + "Misura" + ":" + choice
         message.edit(pool_message, reply_markup=pool_keyboard)
+
 
 commands = {"start": pool_command}
 bot.set_commands(commands)
