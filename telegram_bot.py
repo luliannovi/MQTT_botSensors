@@ -10,9 +10,8 @@ button4 = pzgram.create_button("1 h", "choice4")
 k = [[button1, button2, button3, button4]]
 pool_keyboard = pzgram.create_inline(k)
 
-
+global insta1, minu1, dmin1, unh1
 def istant(instaa = 0):
-        global insta1
         insta1 = instaa
         return insta1
 
