@@ -57,3 +57,4 @@ queries = {"choice1": catch_results, "choice2": catch_results,"choice3": catch_r
 bot.set_query(queries)
 bot.run()
 
+
