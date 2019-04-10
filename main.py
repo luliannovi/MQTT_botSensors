@@ -6,8 +6,7 @@ from threading import Thread
 
 if __name__ == "__main__":
     sensor = mqtt.mqtt_bot()
-    sensor.connect_and_take()
-    threadSensor = Thread(target=sensor.loop)
+    threadSensor = Thread(target=sensor.connect_and_take)
 
     #SETTAGGI BOT E RELATIVI BOTTONI
     telegram=telegram_bot
