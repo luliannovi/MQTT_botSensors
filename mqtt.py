@@ -2,7 +2,6 @@ import paho.mqtt.client as mqtt
 class mqtt_bot:
     def __init__(self):
         self.temperatura=0
-        self.temperatura = 0
         self.listaTemp = []
         self.tempOra = 0
         self.tempMin = 0
@@ -19,10 +18,7 @@ class mqtt_bot:
         self.client.on_message = self.on_message
 
         self.client.connect(host='broker.shiftr.io', port=1883, keepalive=60)
-        try:
-            self.client.loop_forever()
-        except KeyboardInterrupt:
-            print()
+
     def on_connect(self, client, userdata, flags, rc):
         print('result from connect: {}'.format(mqtt.connack_string(rc)))
         self.client.subscribe('calvino-08/temperatura', qos=0)
@@ -51,8 +47,11 @@ class mqtt_bot:
             for i in range(1, 721):
                 tmp = tmp + self.listaTemp[-1]
             self.tempOra = tmp / 720
-
-
+    def loop(self):
+        try:
+            self.client.loop_forever()
+        except KeyboardInterrupt:
+            print()
 
 
 
