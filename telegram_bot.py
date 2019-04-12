@@ -46,5 +46,6 @@ def catch_results(query, data, message, sender):
         pool_message += "\n" + "Misura" + ":" + choice
         message.edit(pool_message, reply_markup=pool_keyboard)
 
+        
 
 
