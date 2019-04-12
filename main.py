@@ -62,3 +62,4 @@ if __name__ == "__main__":
     threadBot=Thread(target=bot.run)
     threadSensor.start()
     threadBot.start()
+    
