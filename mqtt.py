@@ -1,4 +1,6 @@
 import paho.mqtt.client as mqtt
+from decimal import *
+
 class mqtt_bot:
     def __init__(self):
         self.temperatura=0
@@ -32,21 +34,23 @@ class mqtt_bot:
         self.cont1 += 1
         self.cont10 += 1
         self.contOra += 1
+        getcontext().prec = 2
+        getcontext().rounding = ROUND_DOWN
         if (self.cont1 == 11):
             tmp = 0
             for i in range(1, 13):
-                tmp = tmp + self.listaTemp[-i]
-            self.tempMin = tmp / 12
+                tmp = float(tmp) + float(self.listaTemp[len(self.listaTemp)-i])
+            self.tempMin = round(tmp / 12,3)
         if (self.cont10 == 119):
             tmp = 0
             for i in range(1, 121):
-                tmp = tmp + self.listaTemp[-i]
-            self.tempDieci = tmp / 120
+                tmp = float(tmp) + float(self.listaTemp[len(self.listaTemp)-i])
+            self.tempDieci = round(tmp / 120,3)
         if (self.contOra == 719):
             tmp = 0
             for i in range(1, 721):
-                tmp = tmp + self.listaTemp[-1]
-            self.tempOra = tmp / 720
+                tmp = float(tmp) + float(self.listaTemp[len(self.listaTemp)-i])
+            self.tempOra = round(tmp / 720,3)
     def loop(self):
         try:
             self.client.loop_forever()
