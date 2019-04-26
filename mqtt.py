@@ -40,17 +40,20 @@ class mqtt_bot:
             tmp = 0
             for i in range(1, 13):
                 tmp = float(tmp) + float(self.listaTemp[len(self.listaTemp)-i])
-            self.tempMin = round(tmp / 13,2)
+            self.tempMin = round(tmp / 12,2)
+            self.cont1 = 0
         if (self.cont10 == 119):
             tmp = 0
             for i in range(1, 121):
                 tmp = float(tmp) + float(self.listaTemp[len(self.listaTemp)-i])
-            self.tempDieci = round(tmp / 121,2)
+            self.tempDieci = round(tmp / 120,2)
+            self.cont10 = 0
         if (self.contOra == 719):
             tmp = 0
             for i in range(1, 721):
                 tmp = float(tmp) + float(self.listaTemp[len(self.listaTemp)-i])
-            self.tempOra = round(tmp / 721,2)
+            self.tempOra = round(tmp / 720,2)
+            self.contOra = 0
     def loop(self):
         try:
             self.client.loop_forever()
